@@ -24,7 +24,11 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.25rem;
+
+  @media screen and (min-width: 1200px) {
+    font-size: 2rem;
+  }
 }
 
 .body {
