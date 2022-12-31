@@ -1,4 +1,5 @@
-import { memo, ReactNode, FC } from 'react'
+import { FC, memo, ReactNode } from 'react'
+import styles from './DefaultLayout.module.scss'
 import Heading from 'components/atoms/Heading'
 
 type Props = {
