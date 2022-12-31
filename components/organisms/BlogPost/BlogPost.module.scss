@@ -1,0 +1,25 @@
+.post {
+  width: 240px;
+
+  @media screen and (min-width: 1200px) {
+    width: auto;
+  }
+}
+
+.time {
+  color: #555;
+  font-size: 0.875rem;
+}
+
+.title {
+  margin-top: 0.25rem;
+  height: 3rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  @media screen and (min-width: 1200px) {
+    height: 1.5rem;
+  }
+}

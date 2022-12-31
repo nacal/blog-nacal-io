@@ -11,6 +11,8 @@ services:
         source: .
         target: /src
         consistency: delegated
+    env_file:
+      - .env.local
     environment:
       - WATCHPACK_POLLING=true
     entrypoint: docker/entrypoint.sh
