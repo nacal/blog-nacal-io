@@ -1,6 +1,8 @@
 import { ParsedUrlQuery } from 'node:querystring'
 import { Entry, EntryCollection } from 'contentful'
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
+import Head from 'next/head'
+import HeadContents from 'components/atoms/HeadContents'
 import DefaultLayout from 'components/layout/Default'
 import BlogPostPageContainer from 'components/pages/BlogPostPage'
 import { buildClient, IPostFields } from 'lib/contentful'
@@ -46,9 +48,14 @@ type Props = {
 
 const Blog: NextPage<Props> = ({ post }) => {
   return (
-    <DefaultLayout>
-      <BlogPostPageContainer post={post} />
-    </DefaultLayout>
+    <>
+      <Head>
+        <HeadContents title={post.fields.title} />
+      </Head>
+      <DefaultLayout>
+        <BlogPostPageContainer post={post} />
+      </DefaultLayout>
+    </>
   )
 }
 
