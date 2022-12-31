@@ -1,7 +1,7 @@
+import dayjs from 'dayjs'
 import Link from 'next/link'
 import { FC } from 'react'
 import styles from './BlogPost.module.scss'
-import { IPostFields } from 'lib/contentful'
 
 type Props = {
   id: string
@@ -11,9 +11,9 @@ type Props = {
 
 const BlogPost: FC<Props> = ({ id, title, createdAt }) => {
   return (
-    <article>
+    <article className={styles['post']}>
       <Link href={`/blog/${id}`}>
-        <time>{createdAt}</time>
+        <time className={styles['time']}>{dayjs(createdAt).format('YYYY-MM-DD')}</time>
         <h2 className={styles['title']}>{title}</h2>
       </Link>
     </article>
