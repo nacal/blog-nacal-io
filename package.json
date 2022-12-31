@@ -11,8 +11,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@markuplint/jsx-parser": "^3.0.1",
-    "@markuplint/react-spec": "^3.0.1",
     "@next/font": "13.1.1",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
