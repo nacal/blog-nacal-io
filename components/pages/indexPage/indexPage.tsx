@@ -5,7 +5,6 @@ const IndexPage = () => {
   return (
     <>
       <main>
-        <h1 className={styles['title']}>nacal.io</h1>
         <div className={styles['contents']}>
           <div>
             <div className={styles['links']}>
