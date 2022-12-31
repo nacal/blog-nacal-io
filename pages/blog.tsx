@@ -1,6 +1,6 @@
 import { Entry, EntryCollection } from 'contentful'
 import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
-import DefaultLayout from 'components/layout'
+import DefaultLayout from 'components/layout/Default'
 import BlogPageContainer from 'components/pages/BlogPage'
 import { buildClient, IPostFields } from 'lib/contentful'
 
