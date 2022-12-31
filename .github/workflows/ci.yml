@@ -2,9 +2,7 @@ name: CI
 on: [push]
 jobs:
   test:
-    runs-on: normal
-    container:
-      image: node:16.13.0
+    runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v2
