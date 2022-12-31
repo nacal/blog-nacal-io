@@ -16,7 +16,7 @@ const HeadContents: FC<Props> = ({ title, description, url }) => {
       <meta property="og:site_name" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="article" />
-      <meta property="og:image" content={`${process.env.BASE_URL}/api/og?${title}`} />
+      <meta property="og:image" content={`${process.env.BASE_URL}/api/og?title=${title}`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta name="twitter:card" content="summary_large_image" />
