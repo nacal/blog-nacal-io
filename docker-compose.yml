@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - type: bind
+        source: .
+        target: /src
+        consistency: delegated
+    environment:
+      - WATCHPACK_POLLING=true
+    entrypoint: docker/entrypoint.sh
+    command: yarn dev
