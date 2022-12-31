@@ -1,6 +1,6 @@
 import { Entry } from 'contentful'
 import { FC } from 'react'
-import Blog from './BlogPage'
+import BlogPage from './BlogPage'
 import { IPostFields } from 'lib/contentful'
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 }
 
 const BlogPageContainer: FC<Props> = ({ posts }) => {
-  return <Blog posts={posts} />
+  return <BlogPage posts={posts} />
 }
 
 export default BlogPageContainer
