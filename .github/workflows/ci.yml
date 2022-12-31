@@ -1,0 +1,20 @@
+name: CI
+on: [push]
+jobs:
+  test:
+    runs-on: normal
+    container:
+      image: node:16.13.0
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Inject to $HOME/.npmrc
+        run: echo "$NPMRC_CONTENT" > $HOME/.npmrc
+        env:
+          NPMRC_CONTENT: ${{ secrets.NPMRC_CONTENT }}
+      - name: setup next env
+        run: cp .env.development.example .env.development
+      - name: install packages
+        run: yarn install
+      - name: run test
+        run: yarn test
