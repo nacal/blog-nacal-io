@@ -1,6 +1,9 @@
 import { ParsedUrlQuery } from 'node:querystring'
 import { Entry, EntryCollection } from 'contentful'
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import HeadContents from 'components/atoms/HeadContents'
 import DefaultLayout from 'components/layout/Default'
 import BlogPostPageContainer from 'components/pages/BlogPostPage'
 import { buildClient, IPostFields } from 'lib/contentful'
@@ -45,10 +48,21 @@ type Props = {
 }
 
 const Blog: NextPage<Props> = ({ post }) => {
+  const router = useRouter()
+
   return (
-    <DefaultLayout>
-      <BlogPostPageContainer post={post} />
-    </DefaultLayout>
+    <>
+      <Head>
+        <HeadContents
+          title={post.fields.title}
+          description={post.fields.body}
+          url={process.env.BASE_URL + decodeURI(router.asPath)}
+        />
+      </Head>
+      <DefaultLayout>
+        <BlogPostPageContainer post={post} />
+      </DefaultLayout>
+    </>
   )
 }
 
