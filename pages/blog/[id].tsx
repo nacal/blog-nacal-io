@@ -1,5 +1,6 @@
+import { ParsedUrlQuery } from 'node:querystring'
 import { Entry, EntryCollection } from 'contentful'
-import type { NextPage, GetStaticPaths } from 'next'
+import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import DefaultLayout from 'components/layout/Default'
 import BlogPostPageContainer from 'components/pages/BlogPostPage'
 import { buildClient, IPostFields } from 'lib/contentful'
@@ -13,6 +14,11 @@ const getPostEntries = async () => {
   return items
 }
 
+const getPostEntry = async (id: string) => {
+  const item: Entry<IPostFields> = await client.getEntry(id)
+  return item
+}
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const items = await getPostEntries()
   return {
@@ -21,23 +27,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = async () => {
-  const items = await getPostEntries()
+interface Params extends ParsedUrlQuery {
+  id: string
+}
+
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
+  const item = await getPostEntry(params!.id)
   return {
     props: {
-      posts: items,
+      post: item,
     },
   }
 }
 
 type Props = {
-  posts: Entry<IPostFields>[]
+  post: Entry<IPostFields>
 }
 
-const Blog: NextPage<Props> = ({ posts }) => {
+const Blog: NextPage<Props> = ({ post }) => {
   return (
     <DefaultLayout>
-      <BlogPostPageContainer post={posts[0]} />
+      <BlogPostPageContainer post={post} />
     </DefaultLayout>
   )
 }
