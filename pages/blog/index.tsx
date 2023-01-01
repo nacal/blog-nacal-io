@@ -1,6 +1,6 @@
 import { Entry, EntryCollection } from 'contentful'
+import dayjs from 'dayjs'
 import type { NextPage, GetStaticProps } from 'next'
-import Head from 'next/head'
 import DefaultLayout from 'components/layout/Default'
 import BlogPageContainer from 'components/pages/BlogPage'
 import { buildClient, IPostFields } from 'lib/contentful'
@@ -11,9 +11,14 @@ const client = buildClient()
 export const getStaticProps: GetStaticProps = async () => {
   const { items }: EntryCollection<IPostFields> = await client.getEntries({
     content_type: 'post',
-    order: '-sys.createdAt',
+    order: '-fields.publishedAt',
   })
   publishRssXml(items, '/blog')
+  items.map(
+    (item: Entry<IPostFields>) =>
+      (item.fields.publishedAt = dayjs(item.fields.publishedAt).tz('Asia/Tokyo').format('YYYY-MM-DD'))
+  )
+
   return {
     props: { posts: items },
   }

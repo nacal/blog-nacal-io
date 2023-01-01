@@ -1,5 +1,6 @@
 import { ParsedUrlQuery } from 'node:querystring'
 import { Entry, EntryCollection } from 'contentful'
+import dayjs from 'dayjs'
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -36,6 +37,8 @@ interface Params extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
   const item = await getPostEntry(params!.id)
+  item.fields.publishedAt = dayjs(item.fields.publishedAt).tz('Asia/Tokyo').format('YYYY-MM-DD')
+
   return {
     props: {
       post: item,

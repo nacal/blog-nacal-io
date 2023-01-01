@@ -4,6 +4,7 @@ import { Entry } from 'contentful'
 export interface IPostFields {
   title: string
   body: string
+  publishedAt: string
 }
 
 export interface IPost extends Entry<IPostFields> {

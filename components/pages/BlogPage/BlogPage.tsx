@@ -12,7 +12,7 @@ const BlogPage: FC<Props> = ({ posts }) => {
   return (
     <section className={styles['posts']}>
       {posts.map((post: Entry<IPostFields>) => (
-        <BlogPost id={post.sys.id} title={post.fields.title} createdAt={post.sys.createdAt} key={post.sys.id} />
+        <BlogPost id={post.sys.id} title={post.fields.title} publishedAt={post.fields.publishedAt} key={post.sys.id} />
       ))}
     </section>
   )
