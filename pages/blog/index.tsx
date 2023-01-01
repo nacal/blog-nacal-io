@@ -4,6 +4,7 @@ import Head from 'next/head'
 import DefaultLayout from 'components/layout/Default'
 import BlogPageContainer from 'components/pages/BlogPage'
 import { buildClient, IPostFields } from 'lib/contentful'
+import { publishRssXml } from 'lib/feed'
 
 const client = buildClient()
 
@@ -12,6 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
     content_type: 'post',
     order: '-sys.createdAt',
   })
+  publishRssXml(items, '/blog')
   return {
     props: { posts: items },
   }
