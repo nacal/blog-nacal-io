@@ -22,7 +22,7 @@ export const generateEntryRssXml = (entries: Entry<IPostFields>[], path: string)
           },
         },
       ],
-      date: new Date(entry.sys.createdAt),
+      date: new Date(entry.fields.publishedAt),
       url: `${process.env.BASE_URL}${path}/${entry.sys.id}`,
     })
   })
