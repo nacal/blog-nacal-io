@@ -11,7 +11,7 @@ const client = buildClient()
 export const getStaticProps: GetStaticProps = async () => {
   const { items }: EntryCollection<IPostFields> = await client.getEntries({
     content_type: 'post',
-    order: '-sys.createdAt',
+    order: '-fields.publishedAt',
   })
   publishRssXml(items, '/blog')
   items.map(
