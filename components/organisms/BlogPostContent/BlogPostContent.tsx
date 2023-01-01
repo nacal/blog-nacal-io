@@ -1,4 +1,3 @@
-import dayjs from 'dayjs'
 import { FC } from 'react'
 import markdownHtml from 'zenn-markdown-html'
 import styles from './BlogPostContent.module.scss'
