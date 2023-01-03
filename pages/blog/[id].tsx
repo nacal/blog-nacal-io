@@ -5,7 +5,7 @@ import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import HeadContents from 'components/atoms/HeadContents'
-import DefaultLayout from 'components/layout/Default'
+import ArticleLayout from 'components/layout/Article'
 import BlogPostPageContainer from 'components/pages/BlogPostPage'
 import { buildClient, IPostFields } from 'lib/contentful'
 
@@ -62,9 +62,9 @@ const Blog: NextPage<Props> = ({ post }) => {
           url={process.env.BASE_URL + decodeURI(router.asPath)}
         />
       </Head>
-      <DefaultLayout>
+      <ArticleLayout>
         <BlogPostPageContainer post={post} />
-      </DefaultLayout>
+      </ArticleLayout>
     </>
   )
 }
