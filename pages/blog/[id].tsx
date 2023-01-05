@@ -2,7 +2,6 @@ import { ParsedUrlQuery } from 'node:querystring'
 import { Entry, EntryCollection } from 'contentful'
 import dayjs from 'dayjs'
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import HeadContents from 'components/atoms/HeadContents'
 import ArticleLayout from 'components/layout/Article'
@@ -55,13 +54,11 @@ const Blog: NextPage<Props> = ({ post }) => {
 
   return (
     <>
-      <Head>
-        <HeadContents
-          title={post.fields.title}
-          description={post.fields.body}
-          url={process.env.BASE_URL + decodeURI(router.asPath)}
-        />
-      </Head>
+      <HeadContents
+        title={post.fields.title}
+        description={post.fields.body}
+        url={process.env.BASE_URL + decodeURI(router.asPath)}
+      />
       <ArticleLayout>
         <BlogPostPageContainer post={post} />
       </ArticleLayout>
