@@ -55,13 +55,11 @@ const Blog: NextPage<Props> = ({ post }) => {
 
   return (
     <>
-      <Head>
-        <HeadContents
-          title={post.fields.title}
-          description={post.fields.body}
-          url={process.env.BASE_URL + decodeURI(router.asPath)}
-        />
-      </Head>
+      <HeadContents
+        title={post.fields.title}
+        description={post.fields.body}
+        url={process.env.BASE_URL + decodeURI(router.asPath)}
+      />
       <ArticleLayout>
         <BlogPostPageContainer post={post} />
       </ArticleLayout>

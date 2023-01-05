@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { FC } from 'react'
 
 type Props = {
@@ -7,8 +8,8 @@ type Props = {
 }
 const HeadContents: FC<Props> = ({ title, description, url }) => {
   return (
-    <>
-      <title>{title} - nacal.io</title>
+    <Head>
+      <title>{title}</title>
       <meta name="viewport" content="width=device-width,initial-scale=1.0" />
       <meta name="description" content={description} />
       <meta property="og:url" content={url} />
@@ -20,7 +21,7 @@ const HeadContents: FC<Props> = ({ title, description, url }) => {
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta name="twitter:card" content="summary_large_image" />
-    </>
+    </Head>
   )
 }
 
