@@ -1,6 +1,7 @@
 import { Entry, EntryCollection } from 'contentful'
 import dayjs from 'dayjs'
 import type { NextPage, GetStaticProps } from 'next'
+import HeadContents from 'components/atoms/HeadContents'
 import DefaultLayout from 'components/layout/Default'
 import BlogPageContainer from 'components/pages/BlogPage'
 import { buildClient, IPostFields } from 'lib/contentful'
@@ -30,9 +31,12 @@ type Props = {
 
 const Blog: NextPage<Props> = ({ posts }) => {
   return (
-    <DefaultLayout>
-      <BlogPageContainer posts={posts} />
-    </DefaultLayout>
+    <>
+      <HeadContents title="blog - nacal.io" description="nacalのblog" url={process.env.BASE_URL + '/blog'} />
+      <DefaultLayout>
+        <BlogPageContainer posts={posts} />
+      </DefaultLayout>
+    </>
   )
 }
 
