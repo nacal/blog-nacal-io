@@ -10,12 +10,12 @@ type Props = {
 
 const BlogPost: FC<Props> = ({ id, title, publishedAt }) => {
   return (
-    <article className={styles['post']}>
-      <Link href={`/blog/${id}`}>
+    <Link href={`/blog/${id}`}>
+      <article className={styles['post']}>
         <time className={styles['time']}>{publishedAt}</time>
         <h2 className={styles['title']}>{title}</h2>
-      </Link>
-    </article>
+      </article>
+    </Link>
   )
 }
 export default BlogPost
