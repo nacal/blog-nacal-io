@@ -11,6 +11,11 @@
 *::after {
   box-sizing: border-box;
 }
+*:focus {
+  all: revert;
+  text-decoration: none;
+  color: inherit;
+}
 ol,
 ul {
   list-style: none;
