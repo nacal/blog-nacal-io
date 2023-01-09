@@ -42,6 +42,19 @@
   }
 }
 
+.info {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.category {
+  padding-left: 1rem;
+  margin-left: 1rem;
+  border-left: 1px solid #000;
+  line-height: 1em;
+}
+
 .body {
   margin-top: 2.5rem;
 }
