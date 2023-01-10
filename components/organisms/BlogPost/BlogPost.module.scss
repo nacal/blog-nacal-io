@@ -8,7 +8,21 @@
 
 .time {
   color: #555;
+  padding-right: 0.5rem;
+  margin-right: 0.5rem;
+  border-right: 1px solid #333;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
   font-size: 0.875rem;
+}
+
+.category {
+  line-height: 1em;
+  color: #333;
 }
 
 .title {

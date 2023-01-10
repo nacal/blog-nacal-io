@@ -1,0 +1,16 @@
+.title {
+  width: 200px;
+  padding-top: 2.5rem;
+  margin: auto 0.5rem auto auto;
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  @media screen and (min-width: 1200px) {
+    margin: auto auto auto 2rem;
+  }
+}
+
+.category {
+  color: #999;
+  margin-left: 1rem;
+}

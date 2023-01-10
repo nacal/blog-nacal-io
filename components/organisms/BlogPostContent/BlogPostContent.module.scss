@@ -31,6 +31,9 @@
 
 .time {
   color: #555;
+  padding-right: 1rem;
+  margin-right: 1rem;
+  border-right: 1px solid #333;
 }
 
 .title {
@@ -40,6 +43,17 @@
   @media screen and (min-width: 1200px) {
     font-size: 2rem;
   }
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.category {
+  line-height: 1em;
+  color: #333;
 }
 
 .body {

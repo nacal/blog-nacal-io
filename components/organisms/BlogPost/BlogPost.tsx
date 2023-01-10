@@ -6,13 +6,17 @@ type Props = {
   id: string
   title: string
   publishedAt: string
+  category: string
 }
 
-const BlogPost: FC<Props> = ({ id, title, publishedAt }) => {
+const BlogPost: FC<Props> = ({ id, title, publishedAt, category }) => {
   return (
     <Link href={`/blog/${id}`}>
       <article className={styles['post']}>
-        <time className={styles['time']}>{publishedAt}</time>
+        <div className={styles['info']}>
+          <time className={styles['time']}>{publishedAt}</time>
+          <p className={styles['category']}>{category}</p>
+        </div>
         <h2 className={styles['title']}>{title}</h2>
       </article>
     </Link>
