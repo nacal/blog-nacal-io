@@ -17,11 +17,6 @@ const getCategoryEntries = async () => {
   return items
 }
 
-const getCategoryEntry = async (id: string) => {
-  const item: Entry<ICategoryFields> = await client.getEntry(id)
-  return item
-}
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const items = await getCategoryEntries()
   return {
@@ -31,7 +26,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 interface Params extends ParsedUrlQuery {
-  id: string
+  slug: string
+}
+
+const getCategory = async (params: Params | undefined) => {
+  const { items }: EntryCollection<ICategoryFields> = await client.getEntries({
+    content_type: 'category',
+    'fields.slug': params!.slug,
+  })
+  return items[0]
 }
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
@@ -46,8 +49,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
       (item.fields.publishedAt = dayjs(item.fields.publishedAt).tz('Asia/Tokyo').format('YYYY-MM-DD'))
   )
 
-  const category = await getCategoryEntry(items[0].fields.category.sys.id)
-
+  const category = await getCategory(params)
   return {
     props: { posts: items, category: category },
   }
