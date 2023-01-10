@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { FC } from 'react'
 import markdownHtml from 'zenn-markdown-html'
 import styles from './BlogPostContent.module.scss'
@@ -7,10 +8,11 @@ type Props = {
   title: string
   publishedAt: string
   body: string
-  category: string
+  categoryTitle: string
+  categorySlug: string
 }
 
-const BlogPostContent: FC<Props> = ({ title, publishedAt, body, category }) => {
+const BlogPostContent: FC<Props> = ({ title, publishedAt, body, categoryTitle, categorySlug }) => {
   const html = markdownHtml(body)
 
   return (
@@ -19,7 +21,9 @@ const BlogPostContent: FC<Props> = ({ title, publishedAt, body, category }) => {
         <h2 className={styles['title']}>{title}</h2>
         <div className={styles['info']}>
           <time className={styles['time']}>{publishedAt}</time>
-          <p className={styles['category']}>{category}</p>
+          <Link href={`/blog/category/${categorySlug}`}>
+            <p className={styles['category']}>{categoryTitle}</p>
+          </Link>
         </div>
         <div
           className={`${styles['body']} znc`}

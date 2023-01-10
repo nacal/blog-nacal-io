@@ -15,7 +15,8 @@ const BlogPage: FC<Props> = ({ post }) => {
         title={post.fields.title}
         publishedAt={post.fields.publishedAt}
         body={post.fields.body}
-        category={post.fields.category.fields.title}
+        categoryTitle={post.fields.category.fields.title}
+        categorySlug={post.fields.category.fields.slug}
       />
     </section>
   )
