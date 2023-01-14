@@ -3,14 +3,9 @@
   place-items: end;
   height: 100%;
   padding: 0 1rem 1rem 0;
-  position: fixed;
-  right: 0;
-
   @media screen and (min-width: 1200px) {
     place-items: center;
     padding: 0;
-    position: unset;
-    right: auto;
   }
 }
 
