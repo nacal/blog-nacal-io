@@ -59,25 +59,13 @@ const Blog: NextPage<Props> = ({ post }) => {
   useEffect(() => {
     ;(async () => {
       try {
-        const count = await axios.get(
-          `https://edge-config.vercel.com/${process.env.NEXT_PUBLIC_EDGE_CONFIG_ID}/item/${post.sys.id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.NEXT_PUBLIC_EDGE_CONFIG_TOKEN}`,
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
-              'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Authorization, Accept',
-              'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, DELETE, PUT',
-            },
-          }
-        )
-        console.log(count)
+        const count = await axios.get(`/api/favorite/${post.sys.id}`)
         setFavoriteCount(count.data)
       } catch (error) {
         console.log(error)
       }
     })()
-  }, [post.sys.id])
+  }, [])
 
   const addFavorite = async () => {
     try {
