@@ -63,7 +63,7 @@ const Blog: NextPage<Props> = ({ post }) => {
       console.log(`favoriteCount` + favoriteCount)
       favoriteCount && setFavoriteCount(favoriteCount)
     })()
-  }, [])
+  }, [post.sys.id])
 
   const addFavorite = async () => {
     try {
