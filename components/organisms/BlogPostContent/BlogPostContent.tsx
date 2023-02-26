@@ -11,9 +11,19 @@ type Props = {
   body: string
   categoryTitle: string
   categorySlug: string
+  addFavorite: () => void
+  favoriteCount: number
 }
 
-const BlogPostContent: FC<Props> = ({ title, publishedAt, body, categoryTitle, categorySlug }) => {
+const BlogPostContent: FC<Props> = ({
+  title,
+  publishedAt,
+  body,
+  categoryTitle,
+  categorySlug,
+  addFavorite,
+  favoriteCount,
+}) => {
   const html = markdownHtml(body)
 
   return (
@@ -27,7 +37,7 @@ const BlogPostContent: FC<Props> = ({ title, publishedAt, body, categoryTitle, c
               <p className={styles['category']}>{categoryTitle}</p>
             </Link>
           </div>
-          <FavorieButton />
+          <FavorieButton addFavorite={addFavorite} favoriteCount={favoriteCount} />
         </div>
         <div
           className={`${styles['body']} znc`}

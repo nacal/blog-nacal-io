@@ -4,19 +4,25 @@ import styles from './FavoriteButton.module.scss'
 
 type Props = {
   isFavorite?: boolean
+  addFavorite: () => void
+  favoriteCount: number
 }
 
-const FavorieButton: FC<Props> = ({ isFavorite = false }) => {
+const FavorieButton: FC<Props> = ({ isFavorite = false, addFavorite, favoriteCount }) => {
   const [isActive, setIsActive] = useState(isFavorite)
 
   const toggleButton = () => {
     setIsActive(() => !isActive)
+    addFavorite()
   }
 
   return (
-    <button className={styles['button']} onClick={toggleButton}>
-      <FaHeart title="faborite icon" className={`${styles['icon']} ${isActive ? styles['active'] : ''}`} />
-    </button>
+    <div className={styles['favorite']}>
+      <button className={styles['button']} onClick={toggleButton}>
+        <FaHeart title="faborite icon" className={`${styles['icon']} ${isActive ? styles['active'] : ''}`} />
+      </button>
+      <p className={styles['label']}>{favoriteCount}</p>
+    </div>
   )
 }
 

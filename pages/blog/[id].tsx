@@ -1,8 +1,11 @@
 import { ParsedUrlQuery } from 'node:querystring'
+import { get, createClient } from '@vercel/edge-config'
+import axios from 'axios'
 import { Entry, EntryCollection } from 'contentful'
 import dayjs from 'dayjs'
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import HeadContents from 'components/atoms/HeadContents'
 import ArticleLayout from 'components/layout/Article'
 import BlogPostPageContainer from 'components/pages/BlogPostPage'
@@ -51,6 +54,42 @@ type Props = {
 
 const Blog: NextPage<Props> = ({ post }) => {
   const router = useRouter()
+  const [favoriteCount, setFavoriteCount] = useState(0)
+
+  useEffect(() => {
+    ;(async () => {
+      const config = createClient(process.env.NEXT_PUBLIC_EDGE_CONFIG)
+      const favoriteCount = await config.get<number>(post.sys.id)
+      console.log(`favoriteCount` + favoriteCount)
+      favoriteCount && setFavoriteCount(favoriteCount)
+    })()
+  }, [])
+
+  const addFavorite = async () => {
+    try {
+      await axios.patch(
+        `https://api.vercel.com/v1/edge-config/${process.env.NEXT_PUBLIC_EDGE_CONFIG_ID}/items`,
+        {
+          items: [
+            {
+              operation: 'upsert',
+              key: post.sys.id,
+              value: favoriteCount + 1,
+            },
+          ],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_VERCEL_TOKEN}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      setFavoriteCount((c) => c + 1)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <>
@@ -60,7 +99,7 @@ const Blog: NextPage<Props> = ({ post }) => {
         url={process.env.BASE_URL + decodeURI(router.asPath)}
       />
       <ArticleLayout>
-        <BlogPostPageContainer post={post} />
+        <BlogPostPageContainer post={post} addFavorite={addFavorite} favoriteCount={favoriteCount} />
       </ArticleLayout>
     </>
   )
