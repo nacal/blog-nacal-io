@@ -46,6 +46,11 @@
   }
 }
 
+.infos {
+  display: flex;
+  justify-content: space-between;
+}
+
 .info {
   display: flex;
   align-items: center;
