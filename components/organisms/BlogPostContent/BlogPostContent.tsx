@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { FC } from 'react'
-import markdownHtml from 'zenn-markdown-html'
+import markdownToHtml from 'zenn-markdown-html'
 import styles from './BlogPostContent.module.scss'
 import 'zenn-content-css'
 
@@ -13,7 +13,9 @@ type Props = {
 }
 
 const BlogPostContent: FC<Props> = ({ title, publishedAt, body, categoryTitle, categorySlug }) => {
-  const html = markdownHtml(body)
+  const html = markdownToHtml(body, {
+    embedOrigin: 'https://embed.zenn.studio',
+  })
 
   return (
     <article className={styles['article']}>
