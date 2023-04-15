@@ -22,7 +22,9 @@ const BlogPostContent: FC<Props> = ({ id, title, publishedAt, body, categoryTitl
   return (
     <article className={styles['article']}>
       <div className={styles['content']}>
-        <BlogTitle viewTransitionName={`blog-title-${id}`}>{title}</BlogTitle>
+        <BlogTitle type={'bold'} viewTransitionName={`blog-title-${id}`}>
+          {title}
+        </BlogTitle>
         <BlogInfos
           publishedAt={publishedAt}
           category={categoryTitle}

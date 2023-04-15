@@ -20,13 +20,11 @@ const BlogInfosWrapper: FC<WrapperProps> = ({ children, href }) => {
 
 const BlogInfos: FC<Props> = ({ publishedAt, category, viewTransitionName, href }) => {
   return (
-    <div>
-      <div className={styles['info']} style={{ viewTransitionName: viewTransitionName }}>
-        <time className={styles['time']}>{publishedAt}</time>
-        <BlogInfosWrapper href={href}>
-          <p className={styles['category']}>{category}</p>
-        </BlogInfosWrapper>
-      </div>
+    <div className={styles['info']} style={{ viewTransitionName: viewTransitionName }}>
+      <time className={styles['time']}>{publishedAt}</time>
+      <BlogInfosWrapper href={href}>
+        <p className={styles['category']}>{category}</p>
+      </BlogInfosWrapper>
     </div>
   )
 }
