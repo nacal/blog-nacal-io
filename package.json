@@ -20,7 +20,7 @@
     "contentful": "^9.2.14",
     "dayjs": "^1.11.7",
     "eslint": "8.31.0",
-    "eslint-config-next": "13.1.1",
+    "eslint-config-next": "13.3.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "next": "13.1.1",
     "react": "18.2.0",
