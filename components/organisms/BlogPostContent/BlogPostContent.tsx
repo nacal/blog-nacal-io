@@ -3,6 +3,7 @@ import { FC } from 'react'
 import markdownToHtml from 'zenn-markdown-html'
 import styles from './BlogPostContent.module.scss'
 import 'zenn-content-css'
+import BlogTitle from 'components/atoms/BlogTitle'
 
 type Props = {
   id: string
@@ -21,9 +22,7 @@ const BlogPostContent: FC<Props> = ({ id, title, publishedAt, body, categoryTitl
   return (
     <article className={styles['article']}>
       <div className={styles['content']}>
-        <h2 className={styles['title']} style={{ viewTransitionName: `blog-title-${id}` }}>
-          {title}
-        </h2>
+        <BlogTitle viewTransitionName={`blog-title-${id}`}>{title}</BlogTitle>
         <div className={styles['info']}>
           <time className={styles['time']}>{publishedAt}</time>
           <Link href={`/blog/category/${categorySlug}`}>
