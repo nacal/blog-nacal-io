@@ -12,6 +12,7 @@ const BlogPage: FC<Props> = ({ post }) => {
   return (
     <section className={styles['posts']}>
       <BlogPostContent
+        id={post.sys.id}
         title={post.fields.title}
         publishedAt={post.fields.publishedAt}
         body={post.fields.body}

@@ -5,6 +5,7 @@ import styles from './BlogPostContent.module.scss'
 import 'zenn-content-css'
 
 type Props = {
+  id: string
   title: string
   publishedAt: string
   body: string
@@ -12,7 +13,7 @@ type Props = {
   categorySlug: string
 }
 
-const BlogPostContent: FC<Props> = ({ title, publishedAt, body, categoryTitle, categorySlug }) => {
+const BlogPostContent: FC<Props> = ({ id, title, publishedAt, body, categoryTitle, categorySlug }) => {
   const html = markdownToHtml(body, {
     embedOrigin: 'https://embed.zenn.studio',
   })
@@ -20,7 +21,9 @@ const BlogPostContent: FC<Props> = ({ title, publishedAt, body, categoryTitle, c
   return (
     <article className={styles['article']}>
       <div className={styles['content']}>
-        <h2 className={styles['title']}>{title}</h2>
+        <h2 className={styles['title']} style={{ viewTransitionName: `blog-title-${id}` }}>
+          {title}
+        </h2>
         <div className={styles['info']}>
           <time className={styles['time']}>{publishedAt}</time>
           <Link href={`/blog/category/${categorySlug}`}>
