@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import styles from './BlogPost.module.scss'
+import BlogInfos from 'components/atoms/BlogInfos'
 import BlogTitle from 'components/atoms/BlogTitle'
 import TransitionLink from 'components/atoms/TransitionLink'
 
@@ -14,10 +15,7 @@ const BlogPost: FC<Props> = ({ id, title, publishedAt, category }) => {
   return (
     <TransitionLink href={`/blog/${id}`}>
       <article className={styles['post']}>
-        <div className={styles['info']}>
-          <time className={styles['time']}>{publishedAt}</time>
-          <p className={styles['category']}>{category}</p>
-        </div>
+        <BlogInfos publishedAt={publishedAt} category={category} viewTransitionName={`blog-infos-${id}`} />
         <BlogTitle viewTransitionName={`blog-title-${id}`}>{title}</BlogTitle>
       </article>
     </TransitionLink>

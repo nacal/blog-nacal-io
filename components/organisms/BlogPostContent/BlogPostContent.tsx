@@ -1,8 +1,8 @@
-import Link from 'next/link'
 import { FC } from 'react'
 import markdownToHtml from 'zenn-markdown-html'
 import styles from './BlogPostContent.module.scss'
 import 'zenn-content-css'
+import BlogInfos from 'components/atoms/BlogInfos'
 import BlogTitle from 'components/atoms/BlogTitle'
 
 type Props = {
@@ -23,12 +23,12 @@ const BlogPostContent: FC<Props> = ({ id, title, publishedAt, body, categoryTitl
     <article className={styles['article']}>
       <div className={styles['content']}>
         <BlogTitle viewTransitionName={`blog-title-${id}`}>{title}</BlogTitle>
-        <div className={styles['info']}>
-          <time className={styles['time']}>{publishedAt}</time>
-          <Link href={`/blog/category/${categorySlug}`}>
-            <p className={styles['category']}>{categoryTitle}</p>
-          </Link>
-        </div>
+        <BlogInfos
+          publishedAt={publishedAt}
+          category={categoryTitle}
+          viewTransitionName={`blog-infos-${id}`}
+          href={`/blog/category/${categorySlug}`}
+        />
         <div
           className={`${styles['body']} znc`}
           dangerouslySetInnerHTML={{
