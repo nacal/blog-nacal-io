@@ -56,42 +56,7 @@ const Blog: NextPage<Props> = ({ post }) => {
   const router = useRouter()
   const [favoriteCount, setFavoriteCount] = useState(0)
 
-  useEffect(() => {
-    ;(async () => {
-      try {
-        const count = await axios.get(`/api/favorite/${post.sys.id}`)
-        setFavoriteCount(count.data)
-      } catch (error) {
-        console.log(error)
-      }
-    })()
-  }, [])
-
-  const addFavorite = async () => {
-    try {
-      await axios.patch(
-        `https://api.vercel.com/v1/edge-config/${process.env.NEXT_PUBLIC_EDGE_CONFIG_ID}/items`,
-        {
-          items: [
-            {
-              operation: 'upsert',
-              key: post.sys.id,
-              value: favoriteCount + 1,
-            },
-          ],
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_VERCEL_TOKEN}`,
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-      setFavoriteCount((c) => c + 1)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const addFavorite = async () => {}
 
   return (
     <>
