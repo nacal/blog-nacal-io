@@ -7,10 +7,11 @@ import { IPostFields } from 'lib/contentful'
 type Props = {
   post: Entry<IPostFields>
   addFavorite: () => void
+  removeFavorite: () => void
   favoriteCount: number
 }
 
-const BlogPage: FC<Props> = ({ post, addFavorite, favoriteCount }) => {
+const BlogPage: FC<Props> = ({ post, addFavorite, removeFavorite, favoriteCount }) => {
   return (
     <section className={styles['posts']}>
       <BlogPostContent
@@ -20,6 +21,7 @@ const BlogPage: FC<Props> = ({ post, addFavorite, favoriteCount }) => {
         categoryTitle={post.fields.category.fields.title}
         categorySlug={post.fields.category.fields.slug}
         addFavorite={addFavorite}
+        removeFavorite={removeFavorite}
         favoriteCount={favoriteCount}
       />
     </section>

@@ -6,11 +6,14 @@ import { IPostFields } from 'lib/contentful'
 type Props = {
   post: Entry<IPostFields>
   addFavorite: () => void
+  removeFavorite: () => void
   favoriteCount: number
 }
 
-const BlogPostPageContainer: FC<Props> = ({ post, addFavorite, favoriteCount }) => {
-  return <BlogPostPage post={post} addFavorite={addFavorite} favoriteCount={favoriteCount} />
+const BlogPostPageContainer: FC<Props> = ({ post, addFavorite, removeFavorite, favoriteCount }) => {
+  return (
+    <BlogPostPage post={post} addFavorite={addFavorite} removeFavorite={removeFavorite} favoriteCount={favoriteCount} />
+  )
 }
 
 export default BlogPostPageContainer

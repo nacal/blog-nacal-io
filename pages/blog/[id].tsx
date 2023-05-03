@@ -1,4 +1,5 @@
 import { ParsedUrlQuery } from 'node:querystring'
+import kv from '@vercel/kv'
 import { Entry, EntryCollection } from 'contentful'
 import dayjs from 'dayjs'
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
@@ -54,7 +55,15 @@ const Blog: NextPage<Props> = ({ post }) => {
   const router = useRouter()
   const [favoriteCount, setFavoriteCount] = useState(0)
 
-  const addFavorite = async () => {}
+  const addFavorite = async () => {
+    // setFavoriteCount(await kv.incr(post.sys.id))
+    await kv.set('key', 'aaa')
+  }
+
+  const removeFavorite = async () => {
+    // setFavoriteCount(await kv.decr(post.sys.id))
+    await kv.set('key', 'aaa')
+  }
 
   return (
     <>
@@ -64,7 +73,12 @@ const Blog: NextPage<Props> = ({ post }) => {
         url={process.env.BASE_URL + decodeURI(router.asPath)}
       />
       <ArticleLayout>
-        <BlogPostPageContainer post={post} addFavorite={addFavorite} favoriteCount={favoriteCount} />
+        <BlogPostPageContainer
+          post={post}
+          addFavorite={addFavorite}
+          removeFavorite={removeFavorite}
+          favoriteCount={favoriteCount}
+        />
       </ArticleLayout>
     </>
   )
