@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { FC } from 'react'
 import markdownToHtml from 'zenn-markdown-html'
 import styles from './BlogPostContent.module.scss'
@@ -38,6 +39,9 @@ const BlogPostContent: FC<Props> = ({ id, title, publishedAt, body, categoryTitl
           }}
         />
       </div>
+      <Link href="/blog" className={styles['back']}>
+        記事一覧へ
+      </Link>
     </article>
   )
 }

@@ -1,10 +1,5 @@
 .article {
-  display: grid;
-  margin: 0 1rem;
   padding-top: 2.5rem;
-}
-
-.content {
   width: 90vw;
   max-width: 700px;
   margin: 0 auto 2.5rem;
@@ -49,4 +44,14 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.back {
+  margin-top: 4rem;
+  display: inline-block;
+  padding: 1rem;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 2px solid #000;
 }
