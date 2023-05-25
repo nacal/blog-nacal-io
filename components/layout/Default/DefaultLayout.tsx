@@ -14,7 +14,7 @@ const DefaultLayout: FC<Props> = memo(({ children }) => {
         {/* eslint-disable-next-line */}
         <script src="https://embed.zenn.studio/js/listen-embed-event.js" />
       </Head>
-      <main>
+      <main className={styles['main']}>
         <Heading />
         {children}
       </main>

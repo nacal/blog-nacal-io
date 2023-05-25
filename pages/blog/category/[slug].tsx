@@ -3,7 +3,7 @@ import { Entry, EntryCollection } from 'contentful'
 import dayjs from 'dayjs'
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import HeadContents from 'components/atoms/HeadContents'
-import DefaultLayout from 'components/layout/Default'
+import ArticleLayout from 'components/layout/Article'
 import CategoryTitle from 'components/organisms/CategoryTitle'
 import BlogPageContainer from 'components/pages/BlogPage'
 import { buildClient, IPostFields, ICategoryFields } from 'lib/contentful'
@@ -68,12 +68,12 @@ const Blog: NextPage<Props> = ({ posts, category }) => {
         description={`${category.fields.title}カテゴリーの記事一覧ページ`}
         url={process.env.BASE_URL + `/blog/category/${category.fields.slug}`}
       />
-      <DefaultLayout>
+      <ArticleLayout>
         <>
           <CategoryTitle category={category} />
           <BlogPageContainer posts={posts} />
         </>
-      </DefaultLayout>
+      </ArticleLayout>
     </>
   )
 }
