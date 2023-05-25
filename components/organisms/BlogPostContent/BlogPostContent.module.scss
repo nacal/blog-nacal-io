@@ -34,4 +34,19 @@
 
 .body {
   margin-top: 2.5rem;
+  animation: fadeIn 1s ease 1 normal backwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  30% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
