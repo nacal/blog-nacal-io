@@ -6,7 +6,7 @@ type Props = {
 }
 
 const Heading: FC<Props> = ({ isBehind }) => {
-  return <h1 className={`${styles['heading']} ${isBehind && styles['-behind']}`}>nacal.io</h1>
+  return <p className={`${styles['heading']} ${isBehind && styles['-behind']}`}>nacal.io</p>
 }
 
 export default Heading
