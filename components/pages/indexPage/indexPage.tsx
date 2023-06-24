@@ -5,7 +5,7 @@ const IndexPage = () => {
   return (
     <>
       <div className={styles['contents']}>
-        <div>
+        <div className={styles['items']}>
           <div className={styles['links']}>
             <a href="https://github.com/nacal" className={styles['icon']}>
               <FaGithubSquare title="GitHub icon" />
