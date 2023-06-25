@@ -13,7 +13,7 @@ const og = async (req: NextRequest) => {
   try {
     const { searchParams } = new URL(req.url)
     const title = searchParams.get('title')?.slice(0, 100) ?? ''
-    const isTop = title == 'nacal.io'
+    const isTop = title === 'nacal.io'
     const backgroundImageUrl = isTop
       ? 'url(/images/ogp-top.png)'
       : `url(${`data:image/svg+xml,${encodeURIComponent(
