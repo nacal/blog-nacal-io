@@ -5,7 +5,7 @@ import DefaultLayout from 'components/layout/Default'
 export default function Home() {
   return (
     <>
-      <HeadContents title="nacal.io" description="nacal's web site." url={process.env.BASE_URL!} />
+      <HeadContents title="nacal.io" description="I am nacal." url={process.env.BASE_URL!} />
       <DefaultLayout>
         <IndexPage />
       </DefaultLayout>
