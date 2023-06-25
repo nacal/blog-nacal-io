@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import IndexPage from '../components/pages/indexPage'
 import HeadContents from 'components/atoms/HeadContents'
 import DefaultLayout from 'components/layout/Default'
