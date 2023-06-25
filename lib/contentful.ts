@@ -4,6 +4,13 @@ import { Entry } from 'contentful'
 export interface IPostFields {
   title: string
   body: string
+  publishedAt: string
+  category: Entry<ICategoryFields>
+}
+
+export interface ICategoryFields {
+  title: string
+  slug: string
 }
 
 export interface IPost extends Entry<IPostFields> {

@@ -1,19 +1,9 @@
 .post {
-  width: 240px;
-
-  @media screen and (min-width: 1200px) {
-    width: auto;
-  }
-}
-
-.time {
-  color: #555;
-  font-size: 0.875rem;
+  width: auto;
 }
 
 .title {
-  margin-top: 0.25rem;
-  height: 3rem;
+  padding-top: 0.25rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;

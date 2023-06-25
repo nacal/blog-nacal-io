@@ -1,23 +1,37 @@
-import dayjs from 'dayjs'
+import Link from 'next/link'
 import { FC } from 'react'
-import markdownHtml from 'zenn-markdown-html'
+import markdownToHtml from 'zenn-markdown-html'
 import styles from './BlogPostContent.module.scss'
 import 'zenn-content-css'
+import BlogInfos from 'components/atoms/BlogInfos'
+import BlogTitle from 'components/atoms/BlogTitle'
 
 type Props = {
+  id: string
   title: string
-  createdAt: string
+  publishedAt: string
   body: string
+  categoryTitle: string
+  categorySlug: string
 }
 
-const BlogPostContent: FC<Props> = ({ title, createdAt, body }) => {
-  const html = markdownHtml(body)
+const BlogPostContent: FC<Props> = ({ id, title, publishedAt, body, categoryTitle, categorySlug }) => {
+  const html = markdownToHtml(body, {
+    embedOrigin: 'https://embed.zenn.studio',
+  })
 
   return (
     <article className={styles['article']}>
       <div className={styles['content']}>
-        <h2 className={styles['title']}>{title}</h2>
-        <time className={styles['time']}>{dayjs(createdAt).format('YYYY-MM-DD')}</time>
+        <BlogTitle type={'bold'} viewTransitionName={`blog-title-${id}`}>
+          {title}
+        </BlogTitle>
+        <BlogInfos
+          publishedAt={publishedAt}
+          category={categoryTitle}
+          viewTransitionName={`blog-infos-${id}`}
+          href={`/blog/category/${categorySlug}`}
+        />
         <div
           className={`${styles['body']} znc`}
           dangerouslySetInnerHTML={{
@@ -25,6 +39,9 @@ const BlogPostContent: FC<Props> = ({ title, createdAt, body }) => {
           }}
         />
       </div>
+      <Link href="/blog" className={styles['back']}>
+        記事一覧へ
+      </Link>
     </article>
   )
 }

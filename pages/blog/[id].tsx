@@ -1,10 +1,10 @@
 import { ParsedUrlQuery } from 'node:querystring'
 import { Entry, EntryCollection } from 'contentful'
+import dayjs from 'dayjs'
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import HeadContents from 'components/atoms/HeadContents'
-import DefaultLayout from 'components/layout/Default'
+import ArticleLayout from 'components/layout/Article'
 import BlogPostPageContainer from 'components/pages/BlogPostPage'
 import { buildClient, IPostFields } from 'lib/contentful'
 
@@ -36,6 +36,8 @@ interface Params extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
   const item = await getPostEntry(params!.id)
+  item.fields.publishedAt = dayjs(item.fields.publishedAt).tz('Asia/Tokyo').format('YYYY-MM-DD')
+
   return {
     props: {
       post: item,
@@ -52,16 +54,14 @@ const Blog: NextPage<Props> = ({ post }) => {
 
   return (
     <>
-      <Head>
-        <HeadContents
-          title={post.fields.title}
-          description={post.fields.body}
-          url={process.env.BASE_URL + decodeURI(router.asPath)}
-        />
-      </Head>
-      <DefaultLayout>
+      <HeadContents
+        title={post.fields.title}
+        description={post.fields.body}
+        url={process.env.BASE_URL + decodeURI(router.asPath)}
+      />
+      <ArticleLayout>
         <BlogPostPageContainer post={post} />
-      </DefaultLayout>
+      </ArticleLayout>
     </>
   )
 }

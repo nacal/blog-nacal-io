@@ -11,7 +11,14 @@ type Props = {
 const BlogPage: FC<Props> = ({ post }) => {
   return (
     <section className={styles['posts']}>
-      <BlogPostContent title={post.fields.title} createdAt={post.sys.createdAt} body={post.fields.body} />
+      <BlogPostContent
+        id={post.sys.id}
+        title={post.fields.title}
+        publishedAt={post.fields.publishedAt}
+        body={post.fields.body}
+        categoryTitle={post.fields.category.fields.title}
+        categorySlug={post.fields.category.fields.slug}
+      />
     </section>
   )
 }
