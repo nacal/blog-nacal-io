@@ -1,9 +1,10 @@
 .heading {
-  font-size: 12.5rem;
+  font-size: min(12.5rem,25vh);
   font-weight: bold;
   position: fixed;
   line-height: 1em;
   transform: rotate(90deg) translate(1.2em, 1.45em);
+  z-index: 1;
 
   &.-behind {
     @media screen and (max-width: 1020px) {
