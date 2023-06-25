@@ -1,5 +1,4 @@
 import Spline from '@splinetool/react-spline'
-import Head from 'next/head'
 import { FC, memo, ReactNode } from 'react'
 import styles from './DefaultLayout.module.scss'
 import Heading from 'components/atoms/Heading'
