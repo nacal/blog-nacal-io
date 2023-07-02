@@ -9,6 +9,36 @@
   }
 }
 
+.list {
+  display: grid;
+  height: 260px;
+  text-align: right;
+  font-size: 1.5rem;
+  z-index: 1;
+  font-weight: bold;
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin: 4rem 1rem 0 0;
+
+  @media screen and (min-width: 1200px) {
+
+  }
+
+  & li {
+    transition: 0.5s;
+
+    &:hover, &:focus, &:active{
+      font-size: 1.75rem;
+      transition: 0.5s;
+    }
+  }
+
+  .disable {
+    color: #999;
+  }
+}
+
 .items {
   z-index: 1;
 }

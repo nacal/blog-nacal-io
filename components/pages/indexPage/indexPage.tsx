@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { FaGithubSquare, FaTwitterSquare } from 'react-icons/fa'
 import styles from './indexPage.module.scss'
 
@@ -5,6 +6,14 @@ const IndexPage = () => {
   return (
     <>
       <div className={styles['contents']}>
+        <ul className={styles['list']}>
+          <li className={styles['disable']}>Profile</li>
+          <li>
+            <Link href="/blog">Blog</Link>
+          </li>
+          <li className={styles['disable']}>Photos</li>
+          <li className={styles['disable']}>Development</li>
+        </ul>
         <div className={styles['items']}>
           <div className={styles['links']}>
             <a href="https://github.com/nacal" className={styles['icon']}>
