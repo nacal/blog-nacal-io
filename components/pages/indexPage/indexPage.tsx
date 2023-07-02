@@ -1,10 +1,19 @@
 import { FaGithubSquare, FaTwitterSquare } from 'react-icons/fa'
 import styles from './indexPage.module.scss'
+import TransitionLink from 'components/atoms/TransitionLink'
 
 const IndexPage = () => {
   return (
     <>
       <div className={styles['contents']}>
+        <ul className={styles['list']}>
+          <li className={styles['disable']}>Profile</li>
+          <li>
+            <TransitionLink href="/blog">Blog</TransitionLink>
+          </li>
+          <li className={styles['disable']}>Photos</li>
+          <li className={styles['disable']}>Development</li>
+        </ul>
         <div className={styles['items']}>
           <div className={styles['links']}>
             <a href="https://github.com/nacal" className={styles['icon']}>
