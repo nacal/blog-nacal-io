@@ -68,6 +68,11 @@
   & + & {
     margin-left: 1rem;
   }
+
+  &:hover, &:focus, &:active{
+    color: #666;
+    transition: 0.3s;
+  }
 }
 
 .address {
