@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import { FaGithubSquare, FaTwitterSquare } from 'react-icons/fa'
 import styles from './indexPage.module.scss'
+import TransitionLink from 'components/atoms/TransitionLink'
 
 const IndexPage = () => {
   return (
@@ -9,7 +9,7 @@ const IndexPage = () => {
         <ul className={styles['list']}>
           <li className={styles['disable']}>Profile</li>
           <li>
-            <Link href="/blog">Blog</Link>
+            <TransitionLink href="/blog">Blog</TransitionLink>
           </li>
           <li className={styles['disable']}>Photos</li>
           <li className={styles['disable']}>Development</li>
