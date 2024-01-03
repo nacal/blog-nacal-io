@@ -17,7 +17,7 @@
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
     "@types/react-dom": "18.0.11",
-    "@types/rss": "^0.0.29",
+    "@types/rss": "^0.0.32",
     "@vercel/og": "^0.0.21",
     "contentful": "^9.2.14",
     "dayjs": "^1.11.7",
