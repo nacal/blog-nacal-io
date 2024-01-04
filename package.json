@@ -20,7 +20,7 @@
     "@types/rss": "^0.0.32",
     "@vercel/og": "^0.0.21",
     "contentful": "^9.2.14",
-    "dayjs": "^1.11.7",
+    "dayjs": "^1.11.10",
     "eslint": "8.56.0",
     "eslint-config-next": "13.3.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
