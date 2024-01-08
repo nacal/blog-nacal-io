@@ -33,7 +33,7 @@
     "typescript": "5.0.4",
     "zenn-content-css": "^0.1.134",
     "zenn-embed-elements": "^0.1.150",
-    "zenn-markdown-html": "^0.1.134"
+    "zenn-markdown-html": "^0.1.150"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
