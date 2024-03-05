@@ -19,7 +19,7 @@
     "@types/react-dom": "18.0.11",
     "@types/rss": "^0.0.32",
     "@vercel/og": "^0.0.21",
-    "contentful": "^9.2.14",
+    "contentful": "^10.6.24",
     "dayjs": "^1.11.10",
     "eslint": "8.56.0",
     "eslint-config-next": "13.3.0",
