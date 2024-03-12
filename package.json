@@ -14,7 +14,7 @@
     "@next/font": "14.0.4",
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^0.9.373",
-    "@types/node": "18.15.11",
+    "@types/node": "20.11.26",
     "@types/react": "18.0.35",
     "@types/react-dom": "18.0.11",
     "@types/rss": "^0.0.32",
